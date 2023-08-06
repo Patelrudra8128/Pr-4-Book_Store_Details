@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <!-- CSS only -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Font Awesome Symbols/Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+  <style>
+    body {
+      background-image: url('<%= img %>');
+      background-size: fill;
+      background-repeat: no-repeat;
+      font-weight: 100;
+      width: auto;
+      height: auto;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      width: 1140px;
+      margin: 200px auto;
+    }
+
+    .row {
+      padding: 50px 0;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <center>
+      <h1>Book Store</h1>
+    </center>
+    <div class="row">
+      <table border="1">
+        <form action="/updateData" method="post">
+          <input type="hidden" name="upid" value="<%= single.id %>" />
+          <!-- Input Box -->
+          <div class="col-md-2">
+            <div class="mb-3">
+              <label for="inpNewTask" class="form-label" style="font-weight: 600; color: #0e3528 ">Name</label>
+              <input type="text" class="form-control" id="inpNewTask" style="background-color: #c2efe0"
+                aria-describedby="newTaskHelp" name="name" value="<%= single.name %>" >
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="mb-3">
+              <label for="inpNewTask" class="form-label" style="font-weight: 600; color: #0e3528 ">Price</label>
+              <input type="text" class="form-control" id="inpNewTask" style="background-color: #c2efe0"
+                aria-describedby="newTaskHelp" name="price"  value="<%= single.price %>" >
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="mb-3">
+              <label for="inpNewTask" class="form-label" style="font-weight: 600; color: #0e3528 ">Pages</label>
+              <select type="text" class="form-control" id="inpNewTask" style="background-color: #c2efe0"
+                aria-describedby="newTaskHelp" name="pages">
+                <option value="" <% if(single.pages=="" ){ %> Selected <% } %>>--select--</option>
+            <option value="0-200" <% if(single.pages=="0-200" ){ %> Selected <% } %> >0-200</option>
+            <option value="200-400" <% if(single.pages=="200-400"){ %> Selected <% } %>>200-400</option>
+            <option value="400-600" <% if(single.pages=="400-600" ){ %> Selected <% } %>>400-600</option>
+            <option value="600-800" <% if(single.pages=="600-800" ){ %> Selected <% } %>>600-800</option>
+            <option value="800-1000" <% if(single.pages=="800-1000" ){ %> Selected <% } %>>800-1000</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="mb-3">
+              <label for="inpNewTask" class="form-label" style="font-weight: 600; color: #0e3528 ">Author</label>
+              <input type="text" class="form-control" id="inpNewTask" style="background-color: #c2efe0"
+                aria-describedby="newTaskHelp" name="author" value="<%= single.author %>" >
+            </div>
+          </div>
+          <!-- Button -->
+          <div class="col-4 col-sm-3 col-md-4 p-1 row">
+            <input type="submit" class="btn btn-success col"
+              style="background-color:#88FE92; color: #26983B; height: 40px; margin: 30px 10px;">
+          </div>
+        </form>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

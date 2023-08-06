@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <!-- CSS only -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Font Awesome Symbols/Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+  <style>
+    body {
+      background-image: url('<%= img %>');
+      background-size: fill;
+      background-repeat: no-repeat;
+      font-weight: 100;
+      width: auto;
+      height: auto;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      width: 1140px;
+      margin: 200px auto;
+    }
+
+    .row {
+      padding: 50px 0;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <center>
+      <h1>Book Store</h1>
+    </center>
+    <div class="row">
+      <table border="1">
+        <form action="/insertData" method="post">
+          <!-- Input Box -->
+          <div class="col-md-2">
+            <div class="mb-3">
+              <label for="inpNewTask" class="form-label" style="font-weight: 600; color: #0e3528 ">Name</label>
+              <input type="text" class="form-control" id="inpNewTask" style="background-color: #c2efe0"
+                aria-describedby="newTaskHelp" placeholder="Please enter name..." name="name">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="mb-3">
+              <label for="inpNewTask" class="form-label" style="font-weight: 600; color: #0e3528 ">Price</label>
+              <input type="text" class="form-control" id="inpNewTask" style="background-color: #c2efe0"
+                aria-describedby="newTaskHelp" placeholder="Please enter name..." name="price">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="mb-3">
+              <label for="inpNewTask" class="form-label" style="font-weight: 600; color: #0e3528 ">Pages</label>
+              <select type="text" class="form-control" id="inpNewTask" style="background-color: #c2efe0"
+                aria-describedby="newTaskHelp" placeholder="Please enter name..." name="pages">
+                <option value="">--select--</option>
+                <option value="0-200">0-200</option>
+                <option value="200-400">200-400</option>
+                <option value="400-600">400-600</option>
+                <option value="600-800">600-800</option>
+                <option value="800-1000">800-1000</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="mb-3">
+              <label for="inpNewTask" class="form-label" style="font-weight: 600; color: #0e3528 ">Author</label>
+              <input type="text" class="form-control" id="inpNewTask" style="background-color: #c2efe0"
+                aria-describedby="newTaskHelp" placeholder="Please enter name..." name="author">
+            </div>
+          </div>
+          <!-- Button -->
+          <div class="col-4 col-sm-3 col-md-4 p-1 row">
+            <input type="submit" class="btn btn-success col"
+              style="background-color:#88FE92; color: #26983B; height: 40px; margin: 30px 10px;">
+          </div>
+        </form>
+      </table>
+    </div>
+    <br /><br />
+    <div class="row">
+      <table border="1" bgcolor="#1cb084">
+        <tr class="text-center">
+          <th>Name</th>
+          <th>Price</th>
+          <th>Pages</th>
+          <th>Author</th>
+          <th>Action</th>
+        </tr>
+        <% data.map((val)=>{ %>
+          <tr class="text-center">
+            <td style="width: 300px;">
+              <%= val.name %>
+            </td>
+            <td style="width: 300px;">
+              <%= val.price %>
+            </td>
+            <td style="width: 300px;">
+              <%= val.pages %>
+            </td>
+            <td style="width: 300px;">
+              <%= val.author %>
+            </td>
+            <td style="width: 300px; display: flex; border-color: transparent;">
+              <!-- Edit Button -->
+              <button class="btn btn-info col" id="btnReset" style="background-color:skyblue; color: darkcyan" disabled>
+                <a href="/editData?id=<%= val.id %>" style="color: darkcyan;"><i class="fas fa-backspace"
+                    style="color: darkcyan"></i> Edit</a>
+              </button>
+              <!-- Delete Button -->
+              <button class="btn btn-danger col" id="btnReset"
+                style="background-color: #F47875; color: #982826; margin: 0 10px;" disabled>
+                <a href="/deleteData?id=<%= val.id %>" style="color: #982826;"><i class="fas fa-trash-alt"
+                    style="color: #982826"></i> Delete</a>
+              </button>
+            </td>
+          </tr>
+          <% }); %>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
